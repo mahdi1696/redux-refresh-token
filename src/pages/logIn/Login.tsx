@@ -27,7 +27,7 @@ export default function Login({}: Props) {
         const result = await login({ userName, password }).unwrap();
         if (result.accessToken) {
           dispatch(setCredential({ token: result?.accessToken }));
-          navigate("/counter");
+          navigate("/protected");
         }
       } catch (error) {}
     }

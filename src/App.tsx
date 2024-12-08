@@ -7,6 +7,7 @@ import Login from "./pages/logIn/Login";
 import RequiredAuth from "./pages/auth/RequiredAuth";
 import Counter from "./pages/counter/Counter";
 import LoginLink from "./pages/logIn/LoginLink";
+import Protected from "./pages/protected/Protected";
 
 function App() {
   return (
@@ -40,6 +41,17 @@ function App() {
                 Counter
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/protected"
+                end
+                className={({ isActive }) =>
+                  isActive ? "text-red-700" : "text-black"
+                }
+              >
+                Protected
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>
@@ -49,6 +61,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/counter" element={<RequiredAuth />}>
           <Route index element={<Counter />}></Route>
+        </Route>
+        <Route path="/protected" element={<RequiredAuth />}>
+          <Route index element={<Protected />}></Route>
         </Route>
         <Route path="/*" element={<NotFound />}></Route>
       </Routes>
